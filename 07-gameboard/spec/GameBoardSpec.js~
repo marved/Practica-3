@@ -140,16 +140,7 @@ describe("Clase GameBoard", function(){
 
 	});
 
-	it("overlap", function(){
 
-	var gBoard = new GameBoard();
-
-	var obj1={x:0,y:0,w:5,h:10};
-
-	expect(gBoard.overlap(obj1, {x:0, y:0, h:1, w:10})).toBe(true);
-	expect(gBoard.overlap(obj1, {x:1, y:1, h:0, w:-1})).toBe(false);
-  	  
-	});
 
 
 
