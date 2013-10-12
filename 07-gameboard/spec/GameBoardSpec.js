@@ -56,3 +56,66 @@
     colisionado con objetos de cierto tipo, no con todos los objetos.
 
 */
+
+
+describe("Clase GameBoard", function(){
+ 
+
+
+	it("add", function() {
+
+	var gBoard = new GameBoard();
+	
+	var obj1=1;
+	var obj2=2;
+	var obj3=3;
+
+	gBoard.add(obj1);
+	gBoard.add(obj2);
+	gBoard.add(obj3);
+
+	expect(gBoard.objects[0]).toEqual(1);
+	expect(gBoard.objects[1]).toEqual(2);
+	expect(gBoard.objects[2]).toEqual(3);
+
+	});
+
+
+	it("iterate", function(){
+	var gBoard = new GameBoard();
+
+	var o1 = {
+	    step: function (){}
+	};
+	var o2 = {
+	    step: function (){}
+	};
+	var o3 = {
+	    step: function (){}
+	};
+
+	spyOn(o1, "step");
+	spyOn(o2, "step");
+	spyOn(o3, "step");
+
+
+	gBoard.add(o1);	
+	gBoard.add(o2);
+	gBoard.add(o3);
+
+	gBoard.iterate("step", 1.0);
+	
+	expect(o1.step).toHaveBeenCalledWith(1.0);
+	expect(o2.step).toHaveBeenCalledWith(1.0);
+	expect(o3.step).toHaveBeenCalledWith(1.0);
+
+    });
+
+
+
+
+
+
+});
+
+
