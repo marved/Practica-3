@@ -151,6 +151,48 @@ describe("Clase GameBoard", function(){
   	  
 	});
 
+	it("step", function() {
+
+	var gBoard = new GameBoard();
+
+	spyOn(gBoard, "step");
+	
+	gBoard.step();
+	
+	expect(gBoard.step).toHaveBeenCalled();
+
+	});
+	
+	it("draw", function(){
+
+	var gBoard = new GameBoard();
+
+	spyOn(gBoard, "draw");
+
+	gBoard.draw();
+
+	expect(gBoard.draw).toHaveBeenCalled();
+
+	});
+
+	it("detect", function() {
+
+	var gBoard = new GameBoard();
+
+	gBoard.objects = [{o1: "a"}, {o1: "b"}];
+
+	var x = function() {
+		return this.o1 == "a";	
+	};
+	var y = function() {
+		return this.o1 == "b";	
+	};
+
+	expect(gBoard.detect(x)).toBe(gBoard.objects[0]);
+	expect(gBoard.detect(y)).toBe(gBoard.objects[1]);
+
+	});
+
 
 
 });
